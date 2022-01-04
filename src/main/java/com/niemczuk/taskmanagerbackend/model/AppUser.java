@@ -1,0 +1,28 @@
+package com.niemczuk.taskmanagerbackend.model;
+
+import lombok.*;
+
+import javax.persistence.*;
+import java.util.UUID;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Entity
+@Table(name = "app_users")
+public class AppUser {
+
+    @Id
+    @GeneratedValue
+    private UUID appUserId;
+
+    private String username;
+
+    private String password;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;
+}
