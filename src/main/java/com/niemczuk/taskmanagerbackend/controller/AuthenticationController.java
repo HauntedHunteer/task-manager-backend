@@ -23,6 +23,6 @@ public class AuthenticationController {
     @PostMapping(value = "/register")
     public ResponseEntity<?> register(@RequestBody AuthenticationRequest authRequest) {
         authenticationService.register(authRequest);
-        return ResponseEntity.ok("Registration successful");
+        return ResponseEntity.ok().build();
     }
 }

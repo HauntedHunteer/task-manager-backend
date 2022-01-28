@@ -28,7 +28,7 @@ public class AppUserService implements UserDetailsService {
 
         if (appUser == null) {
             log.error("User is not present in database");
-            throw new UsernameNotFoundException("User is not present in database");
+            throw new UsernameNotFoundException("Username and password does not match");
         } else {
             log.info("User {} found in database", username);
         }
