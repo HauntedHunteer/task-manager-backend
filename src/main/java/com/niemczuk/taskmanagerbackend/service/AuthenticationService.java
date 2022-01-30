@@ -39,7 +39,6 @@ public class AuthenticationService {
         return AuthenticationResponse.builder()
                 .jwtToken(jwtToken)
                 .username(userDetails.getUsername())
-                .userId(appUser.getAppUserId().toString())
                 .roleName(appUser.getRole().getName())
                 .build();
     }

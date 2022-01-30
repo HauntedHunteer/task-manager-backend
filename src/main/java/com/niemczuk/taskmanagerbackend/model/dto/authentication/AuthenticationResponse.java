@@ -11,6 +11,5 @@ public class AuthenticationResponse {
 
     String jwtToken;
     String username;
-    String userId;
     String roleName;
 }
