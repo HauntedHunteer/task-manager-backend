@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/api/authenticate")
@@ -21,7 +23,7 @@ public class AuthenticationController {
     }
 
     @PostMapping(value = "/register")
-    public ResponseEntity<?> register(@RequestBody AuthenticationRequest authRequest) {
+    public ResponseEntity<?> register(@Valid @RequestBody AuthenticationRequest authRequest) {
         authenticationService.register(authRequest);
         return ResponseEntity.ok().build();
     }

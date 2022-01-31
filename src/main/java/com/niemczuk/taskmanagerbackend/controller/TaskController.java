@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
@@ -31,12 +32,12 @@ public class TaskController {
     }
 
     @PostMapping(value = "/add")
-    public ResponseEntity<TaskDto> addTask(@RequestBody TaskDto taskDto) {
+    public ResponseEntity<TaskDto> addTask(@Valid @RequestBody TaskDto taskDto) {
         return new ResponseEntity<>(taskService.addTask(taskDto), HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/update")
-    public ResponseEntity<TaskDto> updateTask(@RequestBody TaskDto taskDto) {
+    public ResponseEntity<TaskDto> updateTask(@Valid @RequestBody TaskDto taskDto) {
         return new ResponseEntity<>(taskService.updateTask(taskDto), HttpStatus.OK);
     }
 
