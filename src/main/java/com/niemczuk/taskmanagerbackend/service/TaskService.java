@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,7 +28,9 @@ public class TaskService {
 
     public List<TaskDto> getAllUserTasks() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        return taskRepository.findAllByOwner_Username(auth.getName());
+        List <TaskDto> tasks = taskRepository.findAllByOwner_Username(auth.getName());
+        tasks.sort(Comparator.comparing(TaskDto::getCreationDate).reversed());
+        return tasks;
     }
 
     public TaskDto getTaskById(UUID taskId) {
